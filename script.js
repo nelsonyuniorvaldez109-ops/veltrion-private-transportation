@@ -111,7 +111,9 @@ const destinationButtons = [...document.querySelectorAll('[data-destination]')];
 let destinationVideoIndex = 0;
 function activateDestination(slug) {
   destinationButtons.forEach((button) => button.classList.toggle('selected', button.dataset.destination === slug));
-  if (window.matchMedia('(max-width: 850px), (prefers-reduced-motion: reduce)').matches) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection?.saveData === true;
+  if (reducedMotion || saveData) return;
   const current = destinationVideos[destinationVideoIndex];
   const incoming = destinationVideos[1 - destinationVideoIndex];
   incoming.classList.remove('ready');
