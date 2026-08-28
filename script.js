@@ -91,6 +91,10 @@ document.querySelectorAll('.vehicle-selector button, .fleet-gallery button').for
     document.querySelector('.fleet-photo').dataset.vehicle = name.toLowerCase().replaceAll(' ', '-');
   });
 });
+
+const fleetGallery = document.querySelector('.fleet-gallery');
+fleetGallery?.addEventListener('touchstart', (event) => event.stopPropagation(), { passive: true });
+fleetGallery?.addEventListener('touchend', (event) => event.stopPropagation(), { passive: true });
 document.querySelector('#booking-form')?.addEventListener('submit', (event) => {
   event.preventDefault();
   const form = event.currentTarget;
